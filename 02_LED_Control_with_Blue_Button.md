@@ -30,11 +30,11 @@ while (1)
 ```
 
 # 3. `Çalıştırdım, Ama...`
-Çalıştırdığımda fark ettiğim şey şu oldu: STM kartım üzerindeki LD2 kısmındaki yeşil led sürekli yanıyordu ve mavi butona basınca hiçbir şey değişmiyordu. Sonra siyah butona bastım ve siyah butona basınca LD2 kısmındaki yeşil led'in söndüğünü fark ettim. Yani mavi butonla ledi kontrol etmeyi umuyorken, siyah butonla kontrol eder oldum.
+Çalıştırdığımda fark ettiğim şey şu oldu: STM kartım üzerindeki LD2 kısmındaki yeşil LED sürekli yanıyordu ve mavi butona basınca hiçbir şey değişmiyordu. Sonra siyah butona bastım ve siyah butona basınca LD2 kısmındaki yeşil LED'in söndüğünü fark ettim. Yani mavi butonla LED'i kontrol etmeyi umuyorken, siyah butonla kontrol eder oldum.
 
-Yaptığım araştırma sonucunda, siyah led'in "Reset" butonu olduğunu öğrendim. Yani yazdığım kod sebebiyle siyah butona basınca led sönmüyor, siyah butona basınca kartın üzerindeki elektriği kestiğim için doğal olarak o LD2 ledi sönüyordu. Bunun sebebinin de, kod üzerinde Input olarak ayarladığım PC13 pininin CubeMX üzerinde GPIO_Input olarak ayarlanmayışı olduğunu anladım.
+Yaptığım araştırma sonucunda, siyah butonun **"Reset (NRST)"** butonu olduğunu öğrendim. Yani yazdığım kod sebebiyle siyah bu tona basınca LED sönmüyor; siyah butona basınca **işlemciyi donanımsal resete soktuğum ve tüm GPIO pinleri başlangıç (reset) durumuna döndüğü için** doğal olarak o LD2 LED'i sönüyordu.
 
-CubeMX üzerine geri döndüğümde PC13 pinini GPIO_Input olarak ayarladım.
+Bu durumun asıl sebebinin ise, kod üzerinde girdi (Input) olarak okumaya çalıştığım PC13 pininin CubeMX üzerinde `GPIO_Input` olarak ayarlanmayışı olduğunu anladım. CubeMX üzerine geri döndüğümde PC13 pinini doğru şekilde tanımladım ve sistem olması gerektiği gibi çalıştı.
 
 # 4. `Bu Sefer Çalıştı!`
-Tekrar runladığımda bu sefer mavi butona bastığımda ledi yaktığımı ve bıraktığımda söndürdüğümü (tıpkı kodda yazdığım gibi) gördüm.
+Tekrar runladığımda bu sefer mavi butona bastığımda LED'i yaktığımı ve bıraktığımda söndürdüğümü (tıpkı kodda yazdığım gibi) gördüm.
